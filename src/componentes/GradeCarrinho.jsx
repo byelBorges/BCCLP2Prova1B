@@ -23,6 +23,13 @@ export default function GradeCarrinho(props) {
         }
     }
     */
+
+    function removerProduto(produto){
+        props.setListaCarrinho(
+            ...props.listaCarrinho.filter((itemLista) => itemLista.id !== produto.id)
+        );
+    }
+
     return (
         <div>
             <div style={{
@@ -35,12 +42,20 @@ export default function GradeCarrinho(props) {
                 gap: '20px'
             }}>
                 {props.listaCarrinho.map((produto) => (
-                    <Produto key={produto.id} produto={produto}
-                        setQtdeCarrinho={props.setQtdeCarrinho}
-                        qtdeCarrinho={props.qtdeCarrinho}
-                        listaCarrinho={props.listaCarrinho}
-                        setListaCarrinho={props.setListaCarrinho}
-                    />
+                    <div>
+                        <Produto key={produto.id} produto={produto}
+                            setQtdeCarrinho={props.setQtdeCarrinho}
+                            qtdeCarrinho={props.qtdeCarrinho}
+                            listaCarrinho={props.listaCarrinho}
+                            setListaCarrinho={props.setListaCarrinho}
+                        />
+
+                        <button onClick={() => {
+                            removerProduto(produto);
+                        }}>
+                            Excluir produto
+                        </button>
+                    </div>
                 ))}
             </div>
 

@@ -1,28 +1,36 @@
 import Produto from "../templates/Produto";
 
-export default function GradeProdutos(props){
-    if (props.listaProdutos){
-        return(
+export default function GradeProdutos(props) {
+
+    
+
+    if (props.listaProdutos) {
+        return (
             <div style={{
-                width: '100%', 
-                display: 'flex', 
+                width: '100%',
+                display: 'flex',
                 flexWrap: 'wrap',
-                alignItems: 'center', 
+                alignItems: 'center',
                 margin: '10px',
                 padding: '10px',
-                gap: '20px'}}>
-                    {props.listaProdutos.map((produto) => (
+                gap: '20px'
+            }}>
+                {props.listaProdutos.map((produto) => (
+                    <div>
+
                         <Produto key={produto.id} produto={produto}
-                        setQtdeCarrinho={props.setQtdeCarrinho}
-                        qtdeCarrinho={props.qtdeCarrinho}
-                        listaCarrinho={props.listaCarrinho}
-                        setListaCarrinho={props.setListaCarrinho}
+                            setQtdeCarrinho={props.setQtdeCarrinho}
+                            qtdeCarrinho={props.qtdeCarrinho}
+                            listaCarrinho={props.listaCarrinho}
+                            setListaCarrinho={props.setListaCarrinho}
                         />
-                    ))}
+
+                    </div>
+                ))}
             </div>
         )
     }
-    else{
+    else {
         return (<h1>Carregando...</h1>)
     }
 }
